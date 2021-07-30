@@ -1,0 +1,35 @@
+string isBalanced(string s) {
+    map<char,char> mp;
+    stack<char> st;
+    mp['}']='{';
+    mp[']']='[';
+    mp[')']='(';
+    
+    int i=0;
+    if(s[i]=='\0')
+    {
+        return "NO";
+    }
+    while(s[i]!='\0')
+    {
+        if((s[i]=='(')||(s[i]=='{')||(s[i]=='['))
+        {
+            st.push(s[i]);
+        }
+        else
+        {
+            if((st.empty())||(st.top()!=mp[s[i]]))
+            {
+                return "NO";
+            }
+            else
+            {
+                st.pop();
+            }
+            
+        }
+        i++;
+    }
+   
+    return "YES";
+}
